@@ -1,0 +1,8 @@
+Project name: beverage-classifier
+Description: Beverage-classifier Python project that uses a convolutional neural network (CNN) to classify cola-flavored soda, orange juice, and natural water.
+Instructions: Place your images in the folder images_to_test, download the requirements listed in the file with the same name "pip install torch transformers pillow" and then run it.
+How to run: Type this in the terminal and execute it: python predict.py
+Model explanation: The model works by converting the image and the text into numbers (embeddings) and measuring how similar they are. The text label with the highest similarity is the prediction. This makes the model very flexible and easy to use, even for small projects.
+Dependencies: - transformers
+- torch 
+- Pillow 
