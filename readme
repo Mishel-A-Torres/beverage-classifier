@@ -1,8 +1,62 @@
+Universidad Tecnológica Metropolitana de Aguascalientes (UTMA)
+Author: Mishel Alejandra Torres Villalobos
+Teacher: Pablo Palacios Aranda
+Subject: Programming for Artificial Intelligence 
 Project name: beverage-classifier
-Description: Beverage-classifier Python project that uses a convolutional neural network (CNN) to classify cola-flavored soda, orange juice, and natural water.
-Instructions: Place your images in the folder images_to_test, download the requirements listed in the file with the same name "pip install torch transformers pillow" and then run it.
-How to run: Type this in the terminal and execute it: python predict.py
-Model explanation: The model works by converting the image and the text into numbers (embeddings) and measuring how similar they are. The text label with the highest similarity is the prediction. This makes the model very flexible and easy to use, even for small projects.
-Dependencies: - transformers
-- torch 
-- Pillow 
+
+
+
+Description:
+
+Beverage-classifier Python project Instead of training a traditional CNN, this classifier uses a zero-shot
+learning approach.
+CLIP embeds both images and text into the same vector space.
+
+The model computes cosine similarity between:
+The embedding of the input image
+The embeddings of predefined drink labels
+The label with the highest similarity score is selected as the prediction.
+
+
+Instructions: 
+
+1-Install the required Python packages with the following commands:
+"pip install torch transformers pillow"
+
+Or use the requirements file:
+"pip install -r requirements.txt"
+
+2-Running the Classifier
+*Place your images inside: images_to_test
+*Run the inference script: python predict.py
+
+3-View the Results
+*The predicted labels will be printed in the terminal.
+
+
+Model explanation: 
+
+1*CLIP (Contrastive Language Image Pre-training)
+-Image encoder: Vision Transformer (ViT-B/32)
+-Text encoder: Transformer-based language model
+-Training objective: contrastive learning between images and text
+
+2*Inference Process:
+-Image Loading
+-The image is read using PIL and converted to RGB.
+-Preprocessing:
+The CLIPProcessor normalizes and resizes the image and tokenizes the text labels then encodingm (it produces:
+logits_per_image and logits_per_text).
+
+3*Similarity Computation:
+Logits are passed through a softmax to obtain probabilities across all labels.
+
+4*Prediction Output:
+Highest probability = predicted beverage category.
+
+
+Dependencies: 
+*Transformers: to load the CLIP model from Hugging Face
+*Torch (PyTorch): for tensor operations and model inference
+*Pillow (PIL): for opening and reading images
+
